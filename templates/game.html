@@ -1,0 +1,30 @@
+{% extends 'madlibs-base.html' %}
+	{% block content %}
+	<div class="row text-center">
+		<div class="col-xs-offset-3 col-xs-6">
+			<div class="madlibs-form">
+			  <form action="/results" method="POST">
+						{% for key, value in game.iteritems() %}
+							<div class="row">
+								<div class="col-xs-offset-3 col-xs-6">
+						 			<h3>{{ key }}:</h3>
+						 		</div><!-- closes col -->
+						 	</div><!-- closes row -->
+				    		{% for item in range(0, value) %}
+				    			<div class="row">
+				    				<div class="col-xs-offset-3 col-xs-6">
+					    				<div class="text-inputs">
+						    				<input type="text" size="35" name="{{ key }}-{{ item + 1 }}" placeholder="{{ key }}-{{ item + 1 }}">
+						    			</div><!-- closes text-inputs -->
+						    		</div><!-- closes col -->
+				    			</div><!-- closes row -->
+				    		{% endfor %}
+						{% endfor %}
+						<div class="row text-center">
+							<button type="submit">Submit</button>
+						</div><!-- closes row -->
+			    </form>
+			 	</div><!-- madlibs form -->
+			</div><!-- closes col -->
+		</div><!-- row -->
+ 	{% endblock %}
